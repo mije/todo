@@ -87,7 +87,7 @@ spec:
             - name: PGPOOL_HEALTH_CHECK_RETRY_DELAY
               value: "1"
             - name: PGPOOL_NUM_INIT_CHILDREN
-              value: "15"
+              value: "10"
             - name: PGPOOL_MAX_POOL
               value: "1"
             - name: PGPOOL_ENABLE_LOAD_BALANCING
@@ -117,7 +117,8 @@ spec:
               cpu: 25m
               memory: 128M
 ```
-NOTE: Play with the params to see how it affects the availability during deployment restarts.
+
+*NOTE*: Play with the params, especially increase the `PGPOOL_NUM_INIT_CHILDREN` to see how it affects the availability during deployment restarts.
 
 ## Expose k8s service
 ```bash
@@ -126,4 +127,5 @@ kubectl expose deployment todod --type=NodePort --port=80
 
 ## Test zero-downtime deployment
 Use this [gist](https://gist.github.com/michaljemala/df1d14804375033df1dcd4577dbba268).
-NOTE: Use `minikube service todod` to get endpoint URL.
+
+*NOTE*: Use `minikube service todod` to get endpoint URL.
